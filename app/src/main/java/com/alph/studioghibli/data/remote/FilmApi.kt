@@ -9,7 +9,7 @@ interface FilmApi {
     @GET("films")
     suspend fun getAllFilms() : List<Films>
 
-    @GET("films/{id}")
-    suspend fun getFilmById(@Path("id") id: String) : FilmDetail
+    @GET("films/{filmId}")
+    suspend fun getFilmById(@Path("filmId") id: String) : FilmDetail
 
 }
