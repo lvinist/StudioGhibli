@@ -1,4 +1,4 @@
-package com.alph.studioghibli.ui.theme
+package com.alph.studioghibli.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

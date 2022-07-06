@@ -1,4 +1,4 @@
-package com.alph.studioghibli
+package com.alph.studioghibli.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,8 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.alph.studioghibli.ui.theme.StudioGhibliTheme
+import com.alph.studioghibli.presentation.ui.theme.StudioGhibliTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,6 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
-@Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     StudioGhibliTheme {

@@ -1,4 +1,4 @@
-package com.alph.studioghibli.ui.theme
+package com.alph.studioghibli.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
