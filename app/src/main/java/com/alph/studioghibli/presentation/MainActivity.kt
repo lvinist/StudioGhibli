@@ -6,9 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.alph.studioghibli.presentation.film_detail.FilmDetailScreen
+import com.alph.studioghibli.presentation.film_list.FilmListScreen
 import com.alph.studioghibli.presentation.ui.theme.StudioGhibliTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,21 +26,24 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                   val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.FilmListScreen.route
+                    ) {
+                        composable(
+                            route = Screen.FilmListScreen.route
+                        ) {
+                            FilmListScreen(navController)
+                        }
+                        composable(
+                            route = Screen.FilmDetailScreen.route + "/{filmId}"
+                        ) {
+                            FilmDetailScreen()
+                        }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Composable
-fun DefaultPreview() {
-    StudioGhibliTheme {
-        Greeting("Android")
     }
 }

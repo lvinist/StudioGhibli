@@ -3,6 +3,7 @@ package com.alph.studioghibli.domain.use_case.get_film_detail
 import com.alph.studioghibli.common.Resources
 import com.alph.studioghibli.data.remote.model.toFilmDetailDto
 import com.alph.studioghibli.domain.dto.FilmDetailDto
+import com.alph.studioghibli.domain.dto.FilmDto
 import com.alph.studioghibli.domain.repository.FilmRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -15,13 +16,13 @@ class GetFilmDetailUseCase @Inject constructor(
 ) {
     operator fun invoke(filmId: String) : Flow<Resources<FilmDetailDto>> = flow {
         try {
-            emit(Resources.Loading())
+            emit(Resources.Loading<FilmDetailDto>())
             val filmDetail = filmRepository.getFilmById(filmId).toFilmDetailDto()
-            emit(Resources.Success(filmDetail))
+            emit(Resources.Success<FilmDetailDto>(filmDetail))
         } catch (e: HttpException) {
-            emit(Resources.Error(e.localizedMessage ?: "An Unexpected Error Occurred"))
+            emit(Resources.Error<FilmDetailDto>(e.localizedMessage ?: "An Unexpected Error Occurred"))
         } catch (e: IOException) {
-            emit(Resources.Error("Couldn't reach server, please check your internet connection"))
+            emit(Resources.Error<FilmDetailDto>("Couldn't reach server, please check your internet connection"))
         }
     }
 }

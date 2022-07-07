@@ -15,13 +15,13 @@ class GetFilmsUseCase @Inject constructor(
 ) {
     operator fun invoke() : Flow<Resources<List<FilmDto>>> = flow {
         try {
-            emit(Resources.Loading())
+            emit(Resources.Loading<List<FilmDto>>())
             val films = filmRepository.getAllFilms().map { it.toFilmDto() }
-            emit(Resources.Success(films))
+            emit(Resources.Success<List<FilmDto>>(films))
         } catch (e: HttpException) {
-            emit(Resources.Error(e.localizedMessage ?: "An Unexpected Error Occurred"))
+            emit(Resources.Error<List<FilmDto>>(e.localizedMessage ?: "An Unexpected Error Occurred"))
         } catch (e: IOException) {
-            emit(Resources.Error("Couldn't reach server, please check your internet connection"))
+            emit(Resources.Error<List<FilmDto>>("Couldn't reach server, please check your internet connection"))
         }
     }
 }

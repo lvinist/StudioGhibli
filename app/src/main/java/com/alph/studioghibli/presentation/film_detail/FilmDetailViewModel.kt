@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.alph.studioghibli.common.Constants
 import com.alph.studioghibli.common.Resources
 import com.alph.studioghibli.domain.use_case.get_film_detail.GetFilmDetailUseCase
-import com.alph.studioghibli.domain.use_case.get_films.GetFilmsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

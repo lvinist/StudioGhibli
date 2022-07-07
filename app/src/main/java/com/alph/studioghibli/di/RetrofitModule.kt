@@ -1,6 +1,6 @@
 package com.alph.studioghibli.di
 
-import com.alph.studioghibli.common.Constants
+import com.alph.studioghibli.BuildConfig
 import com.alph.studioghibli.common.Constants.BASE_URL
 import com.alph.studioghibli.data.remote.FilmApi
 import com.squareup.moshi.Moshi
@@ -22,6 +22,14 @@ object RetrofitModule {
     @Provides
     @Singleton
     fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+
+    @Singleton
+    @Provides
+    fun providesLogger(): HttpLoggingInterceptor = HttpLoggingInterceptor()
+        .apply {
+            if (BuildConfig.DEBUG)
+                level = HttpLoggingInterceptor.Level.BODY
+        }
 
     @Provides
     @Singleton
