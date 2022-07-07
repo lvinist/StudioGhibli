@@ -12,6 +12,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.alph.studioghibli.presentation.film_detail.FilmDetailScreen
 import com.alph.studioghibli.presentation.film_list.FilmListScreen
+import com.alph.studioghibli.presentation.navigation.MainScreen
+import com.alph.studioghibli.presentation.navigation.Screens
 import com.alph.studioghibli.presentation.ui.theme.StudioGhibliTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,22 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                   val navController = rememberNavController()
-                    NavHost(
-                        navController = navController,
-                        startDestination = Screen.FilmListScreen.route
-                    ) {
-                        composable(
-                            route = Screen.FilmListScreen.route
-                        ) {
-                            FilmListScreen(navController)
-                        }
-                        composable(
-                            route = Screen.FilmDetailScreen.route + "/{filmId}"
-                        ) {
-                            FilmDetailScreen()
-                        }
-                    }
+                   MainScreen()
                 }
             }
         }

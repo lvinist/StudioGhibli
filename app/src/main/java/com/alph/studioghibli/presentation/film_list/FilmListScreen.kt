@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.alph.studioghibli.presentation.Screen
+import com.alph.studioghibli.presentation.navigation.Screens
 import com.alph.studioghibli.presentation.film_list.components.FilmListItem
 
 @Composable
@@ -29,7 +29,7 @@ fun FilmListScreen(
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(state.films) { film ->
                 FilmListItem(filmDto = film, onItemClick = {
-                    navController.navigate(Screen.FilmDetailScreen.route + "/${film.id}")
+                    navController.navigate(Screens.FilmDetailScreen.route + "/${film.id}")
                 } )
             }
         }
