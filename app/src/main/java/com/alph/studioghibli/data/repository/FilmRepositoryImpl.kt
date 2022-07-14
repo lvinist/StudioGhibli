@@ -1,10 +1,10 @@
 package com.alph.studioghibli.data.repository
 
-import com.alph.studioghibli.data.local.FavoriteFilmsDao
+import com.alph.studioghibli.data.local.entity.FilmEntity
+import com.alph.studioghibli.data.local.room.FavoriteFilmsDao
 import com.alph.studioghibli.data.remote.FilmApi
 import com.alph.studioghibli.data.remote.model.FilmDetail
 import com.alph.studioghibli.data.remote.model.Films
-import com.alph.studioghibli.domain.dto.FilmDto
 import com.alph.studioghibli.domain.repository.FilmRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -21,15 +21,15 @@ class FilmRepositoryImpl @Inject constructor(
         return api.getFilmById(filmId)
     }
 
-    override suspend fun addFavoriteFilm(filmDto: FilmDto) {
-        dao.insertFavFilm(filmDto)
+    override suspend fun addFavoriteFilm(film: FilmEntity) {
+        return dao.insertFavFilm(film)
     }
 
-    override suspend fun getFavoriteFilm(): Flow<List<FilmDto>> {
+    override fun getFavoriteFilm(): Flow<List<FilmEntity>> {
         return dao.getAllFavFilm()
     }
 
-    override suspend fun deleteFavoriteFilm(filmDto: FilmDto) {
-        dao.deleteFavFilm(filmDto)
+    override suspend fun deleteFavoriteFilm(film: FilmEntity) {
+        return dao.deleteFavFilm(film)
     }
 }

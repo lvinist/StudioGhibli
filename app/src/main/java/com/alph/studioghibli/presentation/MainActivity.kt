@@ -7,13 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.alph.studioghibli.presentation.film_detail.FilmDetailScreen
-import com.alph.studioghibli.presentation.film_list.FilmListScreen
 import com.alph.studioghibli.presentation.navigation.MainScreen
-import com.alph.studioghibli.presentation.navigation.Screens
 import com.alph.studioghibli.presentation.ui.theme.StudioGhibliTheme
 import dagger.hilt.android.AndroidEntryPoint
 

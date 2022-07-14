@@ -16,8 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.alph.studioghibli.presentation.navigation.Screens
 import com.alph.studioghibli.presentation.film_list.components.FilmListItem
+import com.alph.studioghibli.presentation.navigation.Screens
 
 @Composable
 fun FilmListScreen(

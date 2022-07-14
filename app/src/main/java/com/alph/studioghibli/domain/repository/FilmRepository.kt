@@ -1,8 +1,8 @@
 package com.alph.studioghibli.domain.repository
 
+import com.alph.studioghibli.data.local.entity.FilmEntity
 import com.alph.studioghibli.data.remote.model.FilmDetail
 import com.alph.studioghibli.data.remote.model.Films
-import com.alph.studioghibli.domain.dto.FilmDto
 import kotlinx.coroutines.flow.Flow
 
 interface FilmRepository {
@@ -13,9 +13,9 @@ interface FilmRepository {
     suspend fun getFilmById(filmId: String) : FilmDetail
 
     //database function
-    suspend fun addFavoriteFilm(filmDto: FilmDto)
+    suspend fun addFavoriteFilm(film: FilmEntity)
 
-    suspend fun getFavoriteFilm() : Flow<List<FilmDto>>
+    fun getFavoriteFilm() : Flow<List<FilmEntity>>
 
-    suspend fun deleteFavoriteFilm(filmDto: FilmDto)
+    suspend fun deleteFavoriteFilm(film: FilmEntity)
 }

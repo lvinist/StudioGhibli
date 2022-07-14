@@ -1,7 +1,7 @@
 package com.alph.studioghibli.presentation.film_favorite
 
-import com.alph.studioghibli.domain.dto.FilmDto
+import com.alph.studioghibli.data.local.entity.FilmEntity
 
 data class FavoriteFilmListState(
-    val films: List<FilmDto> = emptyList()
+    val films: List<FilmEntity> = emptyList()
 )

@@ -23,7 +23,7 @@ fun NavigationGraph(navController: NavHostController) {
         composable(
             route = Screens.FilmFavoriteScreen.route
         ) {
-            FilmFavoriteScreen()
+            FilmFavoriteScreen(navController)
         }
         composable(
             route = Screens.SettingsScreen.route
