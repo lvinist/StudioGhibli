@@ -17,5 +17,7 @@ interface FilmRepository {
 
     fun getFavoriteFilm() : Flow<List<FilmEntity>>
 
+    suspend fun checkFavoriteFilm(filmId: String) : Boolean
+
     suspend fun deleteFavoriteFilm(film: FilmEntity)
 }

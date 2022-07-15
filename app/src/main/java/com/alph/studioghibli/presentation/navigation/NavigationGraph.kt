@@ -33,7 +33,7 @@ fun NavigationGraph(navController: NavHostController) {
         composable(
             route = Screens.FilmDetailScreen.route + "/{filmId}"
         ) {
-            FilmDetailScreen()
+            FilmDetailScreen(upPressed = { navController.popBackStack() })
         }
     }
 }

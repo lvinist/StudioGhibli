@@ -17,4 +17,7 @@ data class FilmEntity(
 
     @ColumnInfo(name = "release_date")
     val releaseDate: String,
+
+    @ColumnInfo(name = "image")
+    val image: String
 )

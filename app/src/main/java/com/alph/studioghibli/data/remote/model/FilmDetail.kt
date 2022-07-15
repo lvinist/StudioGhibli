@@ -48,7 +48,13 @@ data class FilmDetail(
 	val locations: List<String?>? = null,
 
 	@Json(name="id")
-	val id: String? = null
+	val id: String? = null,
+
+	@Json(name="image")
+	val image: String? = null,
+
+	@Json(name="movie_banner")
+	val movieBanner: String? = null,
 )
 
 fun FilmDetail.toFilmDetailDto() : FilmDetailDto {
@@ -59,7 +65,10 @@ fun FilmDetail.toFilmDetailDto() : FilmDetailDto {
 		releaseDate = releaseDate,
 		rtScore = rtScore,
 		producer = producer,
+		director = director,
 		runningTime = runningTime,
-		description = description
+		description = description,
+		image = image,
+		movieBanner = movieBanner
 	)
 }

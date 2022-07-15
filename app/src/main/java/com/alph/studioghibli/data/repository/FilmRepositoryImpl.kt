@@ -29,6 +29,10 @@ class FilmRepositoryImpl @Inject constructor(
         return dao.getAllFavFilm()
     }
 
+    override suspend fun checkFavoriteFilm(filmId: String) : Boolean {
+        return dao.checkFavoriteFilm(filmId)
+    }
+
     override suspend fun deleteFavoriteFilm(film: FilmEntity) {
         return dao.deleteFavFilm(film)
     }

@@ -1,29 +1,43 @@
 package com.alph.studioghibli.presentation.film_detail
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alph.studioghibli.common.Constants
 import com.alph.studioghibli.common.Resources
+import com.alph.studioghibli.data.local.entity.FilmEntity
+import com.alph.studioghibli.domain.use_case.add_fav_film.AddFavFilmUseCase
+import com.alph.studioghibli.domain.use_case.delete_fav_film.DeleteFavFilmUseCase
+import com.alph.studioghibli.domain.use_case.get_fav_film.CheckFavFilmUseCase
 import com.alph.studioghibli.domain.use_case.get_film_detail.GetFilmDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class FilmDetailViewModel @Inject constructor(
     private val getFilmDetailUseCase: GetFilmDetailUseCase,
+    private val addFavFilmUseCase: AddFavFilmUseCase,
+    private val deleteFavFilmUseCase: DeleteFavFilmUseCase,
+    private val checkFavFilmUseCase: CheckFavFilmUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _state = mutableStateOf(FilmDetailState())
     val state: State<FilmDetailState> = _state
 
+    var isFavorite: Boolean? by mutableStateOf(null)
+    private var isFavLoading : Boolean by mutableStateOf(false)
+
     init {
         savedStateHandle.get<String>(Constants.PARAM_FILM_ID)?.let { filmId ->
+            checkFavFilm(filmId)
             getFilmsById(filmId)
         }
     }
@@ -42,5 +56,30 @@ class FilmDetailViewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun checkFavFilm(filmId: String) {
+        viewModelScope.launch {
+            isFavLoading = true
+            if (checkFavFilmUseCase(filmId)) {
+                isFavorite = true
+                isFavLoading = false
+            }
+            isFavLoading = false
+        }
+    }
+
+    fun onFavoriteClicked(film: FilmEntity) {
+        viewModelScope.launch {
+            isFavLoading = true
+            isFavorite = if (isFavorite == true) {
+                deleteFavFilmUseCase(film)
+                false
+            } else {
+                addFavFilmUseCase(film)
+                true
+            }
+
+        }
     }
 }

@@ -17,6 +17,12 @@ data class Films(
 	@Json(name="vehicles")
 	val vehicles: List<String?>? = null,
 
+	@Json(name="image")
+	val image: String? = null,
+
+	@Json(name="movie_banner")
+	val movieBanner: String? = null,
+
 	@Json(name="title")
 	val title: String? = null,
 
@@ -55,6 +61,7 @@ fun Films.toFilmDto() : FilmDto {
 	return FilmDto(
 		id = id,
 		title = title,
-		releaseDate = releaseDate
+		releaseDate = releaseDate,
+		image = image
 	)
 }
