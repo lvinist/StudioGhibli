@@ -1,22 +1,25 @@
-@file:OptIn(ExperimentalAnimationApi::class)
-
 package com.alph.studioghibli.presentation.navigation
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Scaffold
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.commandiron.bubble_navigation_bar_compose.BubbleNavigationBar
+import com.commandiron.bubble_navigation_bar_compose.BubbleNavigationBarItem
 
 @Composable
 fun MainScreen() {
@@ -29,12 +32,10 @@ fun MainScreen() {
         else -> bottomBarState.value = true
     }
 
-    Scaffold (
-        bottomBar ={
-            BottomBar(
-                navController = navController,
-                state = bottomBarState
-            )
+    Scaffold(
+        backgroundColor = MaterialTheme.colorScheme.background,
+        bottomBar = {
+            BottomBar(navController = navController, state = bottomBarState)
         },
     )
     {
@@ -52,43 +53,30 @@ fun BottomBar(
         Screens.FilmFavoriteScreen,
         Screens.SettingsScreen
     )
-
     AnimatedVisibility(
         visible = state.value,
         enter = slideInVertically(initialOffsetY = { it }),
         exit = slideOutVertically(targetOffsetY = { it }),
-    ){
-        BottomNavigation(
-            backgroundColor = Color.Blue,
-        ) {
+    ) {
+        BubbleNavigationBar() {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route
 
             screens.forEach { screen ->
-
-                BottomNavigationItem(
-                    label = {
-                        Text(text = screen.title!!)
-                    },
-                    icon = {
-                        Icon(imageVector = screen.icon!! , contentDescription = null)
-                    },
-
+                BubbleNavigationBarItem(
                     selected = currentRoute == screen.route,
-
                     onClick = {
                         navController.navigate(screen.route) {
-                            popUpTo(navController.graph.findStartDestination().id){
+                            popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
                             }
                             launchSingleTop = true
-                            restoreState =true
+                            restoreState = true
                         }
                     },
-
-                    alwaysShowLabel = false,
-                    selectedContentColor = Color.White,
-                    unselectedContentColor = Color.White.copy(alpha = ContentAlpha.disabled)
+                    icon = screen.icon!!,
+                    title = screen.title.toString(),
+                    selectedColor = MaterialTheme.colorScheme.onBackground
                 )
             }
         }

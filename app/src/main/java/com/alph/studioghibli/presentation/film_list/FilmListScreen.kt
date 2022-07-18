@@ -2,8 +2,9 @@ package com.alph.studioghibli.presentation.film_list
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -39,18 +40,15 @@ fun FilmListScreen(
         scrollStrategy = ScrollStrategy.EnterAlwaysCollapsed,
         toolbar = {
             val textSize = (18 + (30 - 12) * scaffoldState.toolbarState.progress).sp
-
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(100.dp)
                     .pin()
             )
-
-
             Text(
                 "Studio Ghibli",
-                style = TextStyle(color = Color.Black, fontSize = textSize),
+                style = TextStyle(fontSize = textSize),
                 modifier = Modifier
                     .padding(16.dp)
                     .road(
@@ -62,7 +60,7 @@ fun FilmListScreen(
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             LazyVerticalGrid(
-                cells = GridCells.Fixed(2),
+                columns = GridCells.Fixed(2),
                 modifier = Modifier.padding(10.dp).fillMaxHeight(0.95f)
             ) {
                 items(state.films) { film ->
@@ -88,7 +86,7 @@ fun FilmListScreen(
                 )
             }
             if (state.isLoading) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center), color = MaterialTheme.colorScheme.primary)
             }
         }
     }

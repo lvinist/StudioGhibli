@@ -9,6 +9,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
@@ -21,8 +22,8 @@ fun MovieDetailsTopBar(
     upPressed: () -> Unit
 ) {
     TopAppBar(
-        backgroundColor = MaterialTheme.colors.surface.copy(alpha = 0.95f),
-        contentColor = MaterialTheme.colors.onSurface,
+        backgroundColor = androidx.compose.material3.MaterialTheme.colorScheme.background,
+        contentColor = androidx.compose.material3.MaterialTheme.colorScheme.onBackground,
         title = {
             Text(
                 text = title,
@@ -54,7 +55,7 @@ fun MovieDetailsTopBar(
                         Icon(
                             imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                             contentDescription = null,
-                            tint = MaterialTheme.colors.primary
+                            tint = Color.Red
                         )
                     }
                 )

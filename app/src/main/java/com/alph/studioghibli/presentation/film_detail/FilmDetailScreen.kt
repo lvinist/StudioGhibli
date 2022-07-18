@@ -37,6 +37,7 @@ fun FilmDetailScreen(
     val state = viewModel.state.value
 
     Scaffold(
+        backgroundColor = MaterialTheme.colorScheme.background,
         topBar = {
             MovieDetailsTopBar(
                 title = state.filmDetail?.title ?: "",
