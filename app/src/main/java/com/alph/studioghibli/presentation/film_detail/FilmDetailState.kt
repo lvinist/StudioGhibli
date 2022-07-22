@@ -1,7 +1,6 @@
 package com.alph.studioghibli.presentation.film_detail
 
-import com.alph.studioghibli.domain.dto.FilmDetailDto
-import com.alph.studioghibli.domain.dto.FilmDto
+import com.alph.core.domain.dto.FilmDetailDto
 
 data class FilmDetailState(
     val isLoading: Boolean = false,

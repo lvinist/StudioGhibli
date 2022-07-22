@@ -4,8 +4,8 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alph.studioghibli.common.Resources
-import com.alph.studioghibli.domain.use_case.get_films.GetFilmsUseCase
+import com.alph.core.common.Resources
+import com.alph.core.domain.use_case.get_films.GetFilmsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

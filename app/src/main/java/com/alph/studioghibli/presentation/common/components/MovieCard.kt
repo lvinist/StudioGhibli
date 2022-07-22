@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.alph.studioghibli.domain.dto.FilmDto
+import com.alph.core.domain.dto.FilmDto
 import com.alph.studioghibli.presentation.navigation.Screens
 
 @Composable
@@ -60,7 +60,7 @@ fun MovieCard(
                 .padding(12.dp),
                 contentAlignment = Alignment.BottomStart
             ) {
-                Column() {
+                Column {
                     Text(
                         text = films.title.toString(),
                         style = androidx.compose.ui.text.TextStyle(color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold)

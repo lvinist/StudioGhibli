@@ -1,6 +1,6 @@
 package com.alph.studioghibli.presentation.film_list
 
-import com.alph.studioghibli.domain.dto.FilmDto
+import com.alph.core.domain.dto.FilmDto
 
 data class FilmListState(
     val isLoading: Boolean = false,

@@ -25,8 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
-import com.alph.studioghibli.data.local.entity.FilmEntity
-import com.alph.studioghibli.domain.dto.FilmDetailDto
+import com.alph.core.data.local.entity.FilmEntity
 import com.alph.studioghibli.presentation.film_detail.components.MovieDetailsTopBar
 
 @Composable
@@ -96,7 +95,7 @@ fun FilmDetailScreen(
                         modifier = Modifier
                             .padding(16.dp)
                             .fillMaxWidth()
-                            .offset(y = -100.dp), verticalAlignment = Alignment.Bottom
+                            .offset(y = (-100).dp), verticalAlignment = Alignment.Bottom
                     ) {
                         Image(
                             painter = rememberAsyncImagePainter(model = film.image),
@@ -116,7 +115,7 @@ fun FilmDetailScreen(
                     Text(
                         text = "Produced by ${film.producer}\nDirected by ${film.director}\n\n${film.description}",
                         style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.padding(16.dp).offset(y = -100.dp),
+                        modifier = Modifier.padding(16.dp).offset(y = (-100).dp),
                         textAlign = TextAlign.Justify
                     )
                 }
@@ -141,7 +140,7 @@ fun FilmDetailScreen(
 
 @Composable
 private fun MovieInfo(
-    film: FilmDetailDto,
+    film: com.alph.core.domain.dto.FilmDetailDto,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier.fillMaxWidth()) {

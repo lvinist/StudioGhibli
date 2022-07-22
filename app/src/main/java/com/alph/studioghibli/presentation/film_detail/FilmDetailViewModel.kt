@@ -7,13 +7,11 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alph.studioghibli.common.Constants
-import com.alph.studioghibli.common.Resources
-import com.alph.studioghibli.data.local.entity.FilmEntity
-import com.alph.studioghibli.domain.use_case.add_fav_film.AddFavFilmUseCase
-import com.alph.studioghibli.domain.use_case.delete_fav_film.DeleteFavFilmUseCase
-import com.alph.studioghibli.domain.use_case.get_fav_film.CheckFavFilmUseCase
-import com.alph.studioghibli.domain.use_case.get_film_detail.GetFilmDetailUseCase
+import com.alph.core.common.Resources
+import com.alph.core.domain.use_case.get_film_detail.GetFilmDetailUseCase
+import com.alph.favorite.domain.use_case.add_fav_film.AddFavFilmUseCase
+import com.alph.favorite.domain.use_case.delete_fav_film.DeleteFavFilmUseCase
+import com.alph.favorite.domain.use_case.get_fav_film.CheckFavFilmUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -36,7 +34,7 @@ class FilmDetailViewModel @Inject constructor(
     private var isFavLoading : Boolean by mutableStateOf(false)
 
     init {
-        savedStateHandle.get<String>(Constants.PARAM_FILM_ID)?.let { filmId ->
+        savedStateHandle.get<String>(com.alph.core.common.Constants.PARAM_FILM_ID)?.let { filmId ->
             checkFavFilm(filmId)
             getFilmsById(filmId)
         }
@@ -45,13 +43,13 @@ class FilmDetailViewModel @Inject constructor(
     private fun getFilmsById(filmId: String) {
         getFilmDetailUseCase(filmId).onEach { result ->
             when(result) {
-                is Resources.Success -> {
+                is Resources.Success<*> -> {
                     _state.value = FilmDetailState(filmDetail = result.data)
                 }
-                is Resources.Error -> {
+                is Resources.Error<*> -> {
                     _state.value = FilmDetailState(error = result.message ?: "An unexpected error has occurred")
                 }
-                is Resources.Loading -> {
+                is Resources.Loading<*> -> {
                     _state.value = FilmDetailState(isLoading = true)
                 }
             }
@@ -69,7 +67,7 @@ class FilmDetailViewModel @Inject constructor(
         }
     }
 
-    fun onFavoriteClicked(film: FilmEntity) {
+    fun onFavoriteClicked(film: com.alph.core.data.local.entity.FilmEntity) {
         viewModelScope.launch {
             isFavLoading = true
             isFavorite = if (isFavorite == true) {
