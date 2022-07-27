@@ -1,9 +1,8 @@
-package com.alph.favorite.data.repository
+package com.alph.core.data.repository
 
 import com.alph.core.data.local.entity.FilmEntity
 import com.alph.core.data.local.room.FavoriteFilmsDao
-import com.alph.core.data.remote.FilmApi
-import com.alph.favorite.domain.repository.FavoriteFilmRepository
+import com.alph.core.domain.repository.FavoriteFilmRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

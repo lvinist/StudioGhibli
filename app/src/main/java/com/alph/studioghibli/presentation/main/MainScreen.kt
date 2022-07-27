@@ -1,10 +1,9 @@
-package com.alph.studioghibli.presentation.navigation
+package com.alph.studioghibli.presentation.main
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Scaffold
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -14,14 +13,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.alph.studioghibli.presentation.main.MainViewModel
+import com.alph.studioghibli.presentation.navigation.NavigationGraph
+import com.alph.studioghibli.presentation.navigation.Screens
 import com.alph.studioghibli.presentation.ui.theme.StudioGhibliTheme
 import com.alph.studioghibli.provider.shouldUseDarkMode
 import com.commandiron.bubble_navigation_bar_compose.BubbleNavigationBar
@@ -67,7 +65,6 @@ fun BottomBar(
 ) {
     val screens = listOf(
         Screens.FilmListScreen,
-        Screens.FilmFavoriteScreen,
         Screens.SettingsScreen
     )
     AnimatedVisibility(

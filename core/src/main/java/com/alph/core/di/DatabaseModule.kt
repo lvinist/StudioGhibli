@@ -8,6 +8,7 @@ import com.alph.core.data.repository.FilmRepositoryImpl
 import com.alph.core.domain.repository.FilmRepository
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton

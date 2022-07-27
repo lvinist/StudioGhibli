@@ -1,7 +1,6 @@
-package com.alph.favorite.domain.use_case.get_fav_film
+package com.alph.core.domain.use_case.get_fav_film
 
-import com.alph.core.domain.repository.FilmRepository
-import com.alph.favorite.domain.repository.FavoriteFilmRepository
+import com.alph.core.domain.repository.FavoriteFilmRepository
 import javax.inject.Inject
 
 class CheckFavFilmUseCase @Inject constructor(

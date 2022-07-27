@@ -1,4 +1,4 @@
-package com.alph.favorite.domain.repository
+package com.alph.core.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 

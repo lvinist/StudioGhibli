@@ -5,7 +5,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.alph.studioghibli.presentation.film_detail.FilmDetailScreen
-import com.alph.studioghibli.presentation.film_favorite.FilmFavoriteScreen
 import com.alph.studioghibli.presentation.film_list.FilmListScreen
 import com.alph.studioghibli.presentation.settings.SettingsScreen
 
@@ -19,11 +18,6 @@ fun NavigationGraph(navController: NavHostController) {
             route = Screens.FilmListScreen.route
         ) {
             FilmListScreen(navController)
-        }
-        composable(
-            route = Screens.FilmFavoriteScreen.route
-        ) {
-            FilmFavoriteScreen(navController)
         }
         composable(
             route = Screens.SettingsScreen.route

@@ -16,11 +16,6 @@ sealed class Screens(
         title = "Home",
         icon = Icons.Default.Home,
     )
-    object FilmFavoriteScreen: Screens(
-        route = "film_Favorite_screen",
-        title = "Favorite",
-        icon = Icons.Default.Favorite,
-    )
     object SettingsScreen: Screens(
         route = "settings_screen",
         title = "Settings",

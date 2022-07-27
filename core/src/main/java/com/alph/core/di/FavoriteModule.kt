@@ -1,10 +1,11 @@
-package com.alph.favorite.di
+package com.alph.core.di
 
 import com.alph.core.data.local.room.FilmsDatabase
-import com.alph.favorite.data.repository.FavoriteFilmRepositoryImpl
-import com.alph.favorite.domain.repository.FavoriteFilmRepository
+import com.alph.core.data.repository.FavoriteFilmRepositoryImpl
+import com.alph.core.domain.repository.FavoriteFilmRepository
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton

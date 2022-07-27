@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Studio Ghibli"
 include ':app'
 include ':core'
-include ':favorite'
+include ':favorites'

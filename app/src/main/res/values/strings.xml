@@ -8,4 +8,5 @@
     <!-- We default using the system default -->
     <string name="pref_theme_default_value" translatable="false">@string/pref_theme_system_value</string>
     <string name="Settings_title">Settings</string>
+    <string name="title_favorites">Module Title</string>
 </resources>

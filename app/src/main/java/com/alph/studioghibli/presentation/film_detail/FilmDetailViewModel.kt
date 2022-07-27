@@ -8,10 +8,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alph.core.common.Resources
+import com.alph.core.domain.use_case.add_fav_film.AddFavFilmUseCase
+import com.alph.core.domain.use_case.delete_fav_film.DeleteFavFilmUseCase
+import com.alph.core.domain.use_case.get_fav_film.CheckFavFilmUseCase
 import com.alph.core.domain.use_case.get_film_detail.GetFilmDetailUseCase
-import com.alph.favorite.domain.use_case.add_fav_film.AddFavFilmUseCase
-import com.alph.favorite.domain.use_case.delete_fav_film.DeleteFavFilmUseCase
-import com.alph.favorite.domain.use_case.get_fav_film.CheckFavFilmUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
